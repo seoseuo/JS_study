@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let memNum = parseInt(prompt("입장객 :"));
+      let colNum = parseInt(prompt("한 줄에 몇명씩 :"));
+      let rowNum;
+      let setNum;
+
+      if (memNum % colNum === 0) {
+        rowNum = memNum / colNum;
+      } else {
+        rowNum = memNum / colNum + 1;
+      }
+
+      document.write(`<table>`);
+
+      for (let i = 0; i < rowNum; i++) {
+        document.write(`<tr>`);
+
+        for (let j = 0; j < colNum; j++) {
+            setNum = i * colNum + j +1;
+            setNum>memNum ? document.write(`<td></td>`) : document.write(`<td>${setNum}</td>`);    
+        }
+        document.write(`</tr>`);
+      }
+      document.write(`</table>`);
+    </script>
+
+    <style>
+        table{
+            border: 1px gray solid;
+            text-align: center;
+        }
+
+        td{border: 1px wheat solid;
+        }
+    </style>
+  </head>
+  <body>
+  </body>
+</html>
