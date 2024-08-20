@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      /* 가로 세로 비율 고정 하는 법 따로 적어놓아야겠다. */
+    </style>
+
+    <script>
+        function pop() {
+            // Date date = new Date(); 자바 스크립트에서는 이렇게 안한다 ..
+            let newWin = window.open("notice.html", "pop", "width=400px, height=500px");
+			if (newWin == null) {
+				alert("팝업이 차단되어 있습니다. 팝업 차단을 해제해 주세요.")
+			}	
+        }
+    </script>
+  </head>
+  <body>
+    <div>
+      <button id="btn" onclick="pop()">현재 시각 팝업 알리미</button>
+    </div>
+  </body>
+</html>
