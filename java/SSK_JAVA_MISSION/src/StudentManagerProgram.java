@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class StudentManagerProgram {
-    private Scanner sc = new Scanner(System.in); //입력받을 스캐너
+    private final Scanner sc = new Scanner(System.in); //입력받을 스캐너
     private int select = 0; // 선택 할 메뉴
     private int length = 0; // 학생 수
     private Student student; //학생 클래스 객체 변수
@@ -17,19 +17,19 @@ public class StudentManagerProgram {
                 System.out.print("학생 수 입력 : ");
                 try {
                     length = sc.nextInt();
-                    if(length<=0) {
-                        throw new IllegalArgumentException("경고) 양의 정수여야 합니다.\n");
+
+                    if(length<=0) { // 예외 1 : 음수를 입력하였을 때
+                        throw new IllegalArgumentException("[양의 정수를 입력해주세요.]");
                     }
                     plag=true; //이상 없으면 반복문 탈출
 
                 }catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
-                catch (InputMismatchException e) {
-                    System.out.println("경고) 정수여야 합니다.\n");
+                catch (InputMismatchException e) { // 예외 2 : 숫자가 아닌 다른 값을 입력핫였을 때
+                    System.out.println("[정수를 입력해주세요.]");
                     sc.nextLine();
                 }
-
             }
 
             StudentManagerService studentManagerService = new StudentManagerService(length);
@@ -47,7 +47,7 @@ public class StudentManagerProgram {
 
 
                 //자원,메모리 관리. 일관성 유지를 위하여 Scanner 객체를 파라미터로 넘겼습니다.
-                if(select==1) {
+                if(select==1) { // 1. 학생 등록 메뉴 실행
                     int i=0;
                     while(i++<length) {
                         studentManagerService.addStudent(sc);
@@ -85,11 +85,11 @@ public class StudentManagerProgram {
                         continue;
 
                     }else {
-                        System.out.println("정보) y또는 n을 입력해주세요. 초기 메뉴로 돌아갑니다.");
+                        System.out.println("[y또는 n을 입력해주세요. 초기 메뉴로 돌아갑니다.]");
                     }
                 }
                 else {
-                    System.out.println("\n경고) 1~5 까지만 입력할 수 있습니다.");
+                    System.out.println("[1~5 까지만 입력할 수 있습니다.]");
                 }
 
             }while(true);
