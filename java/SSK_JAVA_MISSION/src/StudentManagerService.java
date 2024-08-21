@@ -28,7 +28,8 @@ public class StudentManagerService {
         System.out.println("\n[학생을 등록합니다.]");
 
         if(list.size()==this.length) {
-            System.out.println("정보) 등록하신 학생 수를 초과하였습니다.\n등록에 제한되지는 않습니다.");
+            System.out.println("경고) 등록하신 학생 수를 초과하였습니다.");
+            return;
         }
 
         while(!plag) {
@@ -67,13 +68,13 @@ public class StudentManagerService {
 
 
             while(plag) { //전화번호 입력 양식 체크
-                System.out.print("전화번호 입력 ( 010-****-**** ) : ");
+                System.out.print("전화번호 입력 : ");
                 phone=sc.nextLine().trim();
 
                 if(Pattern.matches(phonePattern,phone)) {
                     plag=false;
                 } else {
-                    System.out.println("[전화번호 형식이 잘못되었습니다.]");
+                    System.out.println("[전화번호 형식이 잘못되었습니다. ( 010-****-**** ) ]");
                 }
             }
 
