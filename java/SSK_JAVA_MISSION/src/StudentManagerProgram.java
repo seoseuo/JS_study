@@ -84,12 +84,12 @@ public class StudentManagerProgram {
                         System.out.println("[프로그램 종료를 취소합니다. 초기 메뉴로 돌아갑니다.]");
                         continue;
 
-                    }else {
+                    }else { // 예외-1 ) y 또는 n 말고 다른 값을 입력했을 때
                         System.out.println("[y또는 n을 입력해주세요. 초기 메뉴로 돌아갑니다.]");
                     }
                 }
                 else {
-                    System.out.println("[1~5 까지만 입력할 수 있습니다.]");
+                    System.out.println("[1~5 까지만 입력할 수 있습니다.]"); // 예외 3: 1-5 까지의 숫자를 입력하지 않았을 때
                 }
 
             }while(true);

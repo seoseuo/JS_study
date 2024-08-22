@@ -89,10 +89,10 @@ public class StudentManagerService {
                 major = sc.nextLine().trim(); //예외 2 : 이름 처음, 중간, 끝에 있는 공백 제거
 
                 if(major.isEmpty()) { // 에외 1 : 아무 값도 입력하지 않았을 때
-                    System.out.println("[전공을 입력해주세요.]");
+                    System.out.println("[학과를 입력해주세요.]");
                 }
                 else if (!(major.matches(korean))) { // 예외 3 : 이름이 한글이 아닐 때
-                    System.out.println("[전공은 한글로 입력합니다.]");
+                    System.out.println("[학과는 한글로 입력합니다.]");
                 }
                 else { // 예외 없이 진행되었다면 ?
                     ++step; // 다음 단계로 진행할 수 있게 step의 크기를 늘려줌.
@@ -154,17 +154,45 @@ public class StudentManagerService {
     }
 
     public void editStudent(Student student,Scanner sc) {
+        int step=3;
+        String phonePattern= "010-\\d{4}-\\d{4}$"; // 전화번호 정규 표현 식
+        String korean = "^[가-힣]+$"; //한글 정규 표현 식
+
         sc.nextLine();
         System.out.println("\n학생 정보를 수정합니다");
 
         System.out.println("학 번 :"+student.getNum());
         System.out.println("이 름 :"+student.getName());
 
-        System.out.print("학   과 입력 : ");
-        student.setMajor(sc.nextLine().trim());
+        while(step<5) {
+            if (step==3) { // 학과 등록
+                System.out.print("학   과 입력 : ");
 
-        System.out.print("전화번호 입력 : ");
-        student.setPhone(sc.nextLine().trim());
+                String changeMajor = sc.nextLine().trim(); //예외 2 : 이름 처음, 중간, 끝에 있는 공백 제거
+
+
+                if(changeMajor.isEmpty()) { // 에외 1 : 아무 값도 입력하지 않았을 때
+                    System.out.println("[전공을 입력해주세요.]");
+                }
+                else if (!(changeMajor.matches(korean))) { // 예외 3 : 이름이 한글이 아닐 때
+                    System.out.println("[전공은 한글로 입력합니다.]");
+                }
+                else { // 예외 없이 진행되었다면 ?
+                    ++step; // 다음 단계로 진행할 수 있게 step의 크기를 늘려줌.
+                }
+            }
+            else { // 전화번호 등록
+                System.out.print("전화번호 입력 : ");
+                String changePhone = sc.nextLine().trim(); // 전화번호 공백 제거.
+
+                if (!(Pattern.matches(phonePattern, changePhone))) { // 예외 1 : 전화번호 정규식 표현에 위배되었을 때
+                    System.out.println("[전화번호 형식이 잘못되었습니다. ( 010-****-**** ) ]"); // 아무것도 입력하지 않았을 때의 예외처리를 하지 않은 이유 : 아무것도 입력하지 않아도 정규식 필터에 걸리기 때문에
+                }
+                else { // 예외 없이 진행되었다면 ?
+                    step++; // 마지막 단게이므로 등록 반복문을 탈출한다.
+                }
+            }
+        }
     }
 
 
