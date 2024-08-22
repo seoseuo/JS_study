@@ -4,9 +4,6 @@ public class Student {
     private String major;
     private String phone; //전화번호
 
-    public Student() {
-
-    }
     public Student(String name, int num, String major, String phone) {
         this.name = name;
         this.num = num;
@@ -18,9 +15,7 @@ public class Student {
         return name;
     }
 
-    public int getNum() {
-        return num;
-    }
+    public int getNum() {return num;}
 
     public String getMajor() {
         return major;
