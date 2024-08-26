@@ -1,3 +1,8 @@
+
+#### SCOTT DB 사용.
+> oracle11g 기준.
+
+
 ###  Colima 설치
 ```
 brew install colima
