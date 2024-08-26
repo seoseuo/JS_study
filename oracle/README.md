@@ -74,3 +74,7 @@ docker logs -f oracle11g
 > 실시간으로 oracle11g 컨테이너의 로그를 확인하겠다는 뜻.
 
 ![](https://velog.velcdn.com/images/seuo/post/6c419ad8-7713-4805-bc52-613609685aef/image.png)
+
+<hr>
+
+> 다시 실행할 땐 가상 환경 구축하는 것 부터 시작하면 될 듯 하다.
