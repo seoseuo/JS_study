@@ -1,0 +1,10 @@
+SELECT * FROM DEPT;
+SELECT * FROM EMP;
+SELECT * FROM SALGRADE;
+
+-- 테이블의 구조를 파악하기 위해선 DESC 가 필요하다.
+DESC DEPT;
+DESC EMP;
+DESC SALGRADE;
+
+--
