@@ -419,3 +419,36 @@ WHERE E1.MGR = E2.EMPNO;
 -- JION ~ ON절을 사용하여 출력하기
 SELECT  E1.ENAME || '의 직속 상관은 ' || E2.ENAME
 FROM EMP E1 JOIN EMP E2 ON E1.MGR = E2.EMPNO;
+
+-- Q12. 직급이 SALESMAN 이 아니면서 급여가 임의의 SALESMAN 보다 
+--급여가 낮은 사원의 사원번호,이름,직급,급여를 출력하기
+
+SELECT EMPNO, ENAME, JOB, SAL
+FROM EMP
+WHERE JOB != 'SALESMAN'
+AND SAL < (
+	SELECT SAL
+	FROM EMP
+	WHERE JOB = 'SALESMAN'
+	);
+    
+    -- Q12. 직급이 SALESMAN 이 아니면서 급여가 임의의 SALESMAN 보다 
+--급여가 낮은 사원의 사원번호,이름,직급,급여를 출력하기
+
+SELECT EMPNO, ENAME, JOB, SAL
+FROM EMP
+WHERE JOB != 'SALESMAN'
+AND SAL < ANY(
+	SELECT SAL
+	FROM EMP
+	WHERE JOB = 'SALESMAN'
+	);
+    
+    -- 서브쿼리 결과 값이 존재하지 않는 경우
+SELECT *
+FROM EMP
+WHERE EXISTS (
+    SELECT DNAME
+    FROM DEPT
+    WHERE DEPTNO = 50
+);  
