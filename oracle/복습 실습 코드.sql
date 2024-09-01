@@ -190,3 +190,232 @@ SELECT ENAME
 FROM EMP
 WHERE SAL > SOME (SELECT SAL FROM EMP WHERE DEPTNO = 30);
 
+
+
+-- ===================================
+
+-- 사원 이름이 JONES인 사원의 급여 출력하기
+
+SELECT SAL
+FROM EMP
+WHERE ENAME = 'JONES';
+
+-- 급여가 2975보다 높은 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL > 2975;
+
+-- 서브쿼리로 JONES의 급여보다 높은 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL > (
+	SELECT SAL
+	FROM EMP
+	WHERE ENAME = 'JONES');
+    
+
+-- EMP 테이블에서 SCOTT보다 빨리 입사한 사원 목록 출력하기
+
+SELECT *
+FROM EMP
+WHERE HIREDATE > (
+	SELECT HIREDATE
+	FROM EMP
+	WHERE ENAME = 'SCOTT');
+
+-- 20번 부서에 속한 사원 중 전체 사원의 
+-- 평균 급여보다 높은 급여를 받는 사원 
+-- 정보와 소속 부서 정보를 출력하기
+
+SELECT *
+FROM EMP
+WHERE DEPTNO = 20
+AND SAL > (
+	SELECT AVG(SAL)
+	FROM EMP);
+
+SELECT *
+FROM EMP
+WHERE DEPTNO = 20
+AND  SAL > (
+    SELECT AVG(SAL)
+    FROM EMP
+);
+
+
+SELECT E.EMPNO, E.ENAME, E.JOB, E.SAL, D.DEPTNO, D.DNAME, D.LOC
+FROM EMP E, DEPT D
+WHERE E.DEPTNO = 20
+    AND E.DEPTNO = D.DEPTNO
+    AND  SAL > (
+        SELECT AVG(SAL)
+        FROM EMP
+    );
+
+-- IN 연산자 사용하기
+-- 부서 번호가 20이거나 30인 사원의 정보를 출력하기
+
+SELECT *
+FROM EMP
+WHERE DEPTNO IN(20,30);
+
+-- 각 부서별 최고 급여와 동일한 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL in(
+	SELECT MAX(SAL)
+	FROM EMP
+    GROUP BY DEPTNO
+    );
+    
+SELECT *
+FROM EMP
+WHERE SAL IN (
+    SELECT MAX(SAL)
+    FROM EMP
+    GROUP BY DEPTNO
+);    
+
+-- ANY 연산자 사용하기
+-- 각 부서별 최고 급여와 동일한 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL ANY(
+	SELECT MAX(SAL)
+	FROM EMP);
+
+-- SOME 연산자 사용하기
+-- 각 부서별 최고 급여와 동일한 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL in(
+	SELECT SOME(SAL)
+	FROM EMP);
+
+-- 30번 부서 사원들의 최대 급여보다 적은 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL < (
+	SELECT MAX(SAL)
+	FROM EMP
+	WHERE DEPTNO = 30);
+
+-- 30번 부서 사원들의 최소 급여보다 많은 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL > (
+	SELECT MIN(SAL)
+	FROM EMP
+	WHERE DEPTNO = 30);
+
+-- 30번 부서 사원들의 최소 급여보다 더 적은 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL < (
+	SELECT MIN(SAL)
+	FROM EMP
+	WHERE DEPTNO = 30);
+
+-- 30번 부서 사원들의 최대 급여보다 더 많은 급여를 받는 사원 정보 출력하기
+
+SELECT *
+FROM EMP
+WHERE SAL > (
+	SELECT MAX(SAL)
+	FROM EMP
+	WHERE DEPTNO = 30);
+
+
+SELECT *
+FROM SALGRADE;
+
+SELECT *
+FROM EMP;
+
+SELECT DEPTNO AS "부서 번호", AVG(SAL) AS "급여 평균"
+FROM EMP;
+
+SELECT DEPTNO AS "부서 번호", AVG(SAL) AS "급여 평균"
+FROM EMP
+GROUP BY DEPTNO;
+
+-- 다중 컬럼을 이용하여 그룹별로 출력하기
+
+SELECT DEPTNO, JOB, COUNT(*), SUM(SAL)
+FROM EMP
+GROUP BY DEPTNO, JOB
+ORDER BY DEPTNO, JOB;
+
+ SELECT JOB, SUM(SAL)
+ FROM EMP
+ WHERE NOT JOB = 'MANAGER'
+ GROUP BY JOB
+ HAVING SUM(SAL) >= 5000
+ ORDER BY JOB;
+ 
+ -- 부서별 평균 급여 중 최고 급여 출력하기
+
+SELECT JOB, MAX(SAL)
+FROM EMP
+GROUP BY JOB
+HAVING MAX(SAL);
+
+-- 부서별 평균 급여 중 최고 급여 출력하기
+
+SELECT MAX(AVG(SAL))
+FROM EMP
+GROUP BY DEPTNO;
+
+-- Q4. 사원번호가 7788인 사원의 이름과 소속 부서명을 출력하기
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E, DEPT D
+WHERE E.EMPNO = 7788;
+
+-- Q4. 사원번호가 7788인 사원의 이름과 소속 부서명을 출력하기
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E, DEPT D
+WHERE E.DEPTNO = D.DEPTNO
+AND E.EMPNO = 7788;
+
+-- Q5. 사원별로 급여 등급을 출력하기 (컬럼은 사원이름,급여,등급만 표시해주세요.)
+
+SELECT E.ENAME, E.SAL, S.GRADE
+FROM EMP E, SALGRADE S;
+
+-- Q5. 사원별로 급여 등급을 출력하기 (컬럼은 사원이름,급여,등급만 표시해주세요.)
+
+SELECT E.ENAME, E.SAL, S.GRADE
+FROM EMP E, SALGRADE S
+WHERE SAL BETWEEN LOSAL AND HISAL;
+
+-- Q6. 사원의 이름과 소속된 부서의 이름과 급여, 급여가 몇 등급인지를 출력하기
+
+SELECT E.ENAME, D.DNAME, E.SAL, S.GRADE
+FROM EMP E, DEPT D, SALGRADE S
+WHERE E.DEPTNO = D.DEPTNO
+AND SAL BETWEEN LOSAL AND HISAL;
+
+select e.ename, d.dname,e.sal, s.grade
+from emp e, dept d, salgrade s
+where e.deptno = d.deptno 
+    and e.sal between s.losal and s.hisal;
+    
+    -- 사원이름과 직속 상관 이름을 출력하기
+
+SELECT E1.ENAME, E2.ENAME
+FROM EMP E1, EMP E2
+WHERE E1.MGR = E2.EMPNO;
+
+-- JION ~ ON절을 사용하여 출력하기
+SELECT  E1.ENAME || '의 직속 상관은 ' || E2.ENAME
+FROM EMP E1 JOIN EMP E2 ON E1.MGR = E2.EMPNO;
