@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Home_Study/BoardWeb.war&apos; to &apos;Home_Study.war&apos;" description="Rename resource &apos;BoardWeb.war&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="BoardWeb.war" name="Home_Study.war" stamp="1725526119518" updateReferences="true"/>
+</session>
