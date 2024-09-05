@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+/Users/seuo/Desktop/DEV/Personal/BrushUp/WEB_SERVER/PROJECTS/.metadata/.plugins/org.eclipse.jdt.core
+3917156077.index
+1865797976.index
+2335967463.index
+1040979429.index
