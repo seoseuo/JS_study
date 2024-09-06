@@ -1,0 +1,20 @@
+package com.ssamz.biz.user;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class SelectUserTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		//JDBC 관련 변수
+		Connection conn=null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+	}
+
+}

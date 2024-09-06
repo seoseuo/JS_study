@@ -1,0 +1,27 @@
+package com.ssamz.biz.common;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class JDBCUtil {
+
+	public static Connection getConnection() {
+		Connection conn = null;
+
+		// JDBC 1단계 : 드라이버 객체 로딩
+		try {
+			DriverManager.registerDriver(new org.h2.Driver());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// JDBC 2단계 : 커넥션 연결
+		// JDBC 5단계 : 커넥션 해제
+		return conn;
+	}
+
+	public static void close(PreparedStatement stmt, Connection conn) {
+
+	}
+
+}

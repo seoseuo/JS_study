@@ -1,0 +1,16 @@
+package com.ssamz.biz.common;
+
+import java.sql.Connection;
+
+public class JDBCUtil {
+
+	public static Connection getConnection() {
+
+		return null;
+	}
+
+	public static void close() {
+
+	}
+
+}

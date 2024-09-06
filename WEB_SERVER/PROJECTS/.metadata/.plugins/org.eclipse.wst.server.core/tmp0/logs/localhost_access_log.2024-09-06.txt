@@ -1,0 +1,10 @@
+127.0.0.1 - - [06/Sep/2024:09:26:14 +0900] "GET / HTTP/1.1" 200 872
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:09:26:15 +0900] "GET /servlet/com.ssamz.web.user.LoginServlet HTTP/1.1" 404 850
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:09:26:15 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:09:26:20 +0900] "GET / HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:09:26:20 +0900] "GET /image/korean.png HTTP/1.1" 304 -
+127.0.0.1 - - [06/Sep/2024:15:22:36 +0900] "GET / HTTP/1.1" 200 872
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:15:22:36 +0900] "GET /WEB-INF/classes/com/ssamz/biz/user/UserDAO.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:15:22:54 +0900] "GET /WEB-INF/classes/com/ssamz/biz/user/UserDAO.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:15:23:05 +0900] "GET /WEB-INF/classes/com/ssamz/biz/user/UserDAO.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [06/Sep/2024:15:25:34 +0900] "GET /WEB-INF/classes/com/ssamz/biz/user/UserDAO.java HTTP/1.1" 404 721
