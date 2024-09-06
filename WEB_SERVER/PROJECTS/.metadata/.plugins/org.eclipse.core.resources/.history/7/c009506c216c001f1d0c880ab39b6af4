@@ -14,8 +14,7 @@ public class UserDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
-	
+
 	// USERS 테이블 관련 SQL 명령어.
 	private String USER_LIST = "SELECT * FROM USERS";
 	private String USER_INSERT = "INSERT INTO USERS VALUES(?,?,?,?)";
@@ -75,20 +74,14 @@ public class UserDAO {
 	// 회원 수정
 	public void updateUser(String name, String role, String id) {
 		try {
-
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(USER_UPDATE);
 			stmt.setString(1, name);
 			stmt.setString(2, role);
 			stmt.setString(3, id);
-
-			stmt.executeUpdate();
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(stmt, conn);
 		}
 	}
 

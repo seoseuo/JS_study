@@ -6,7 +6,7 @@ public class SelectUserTest3 {
 		// TODO Auto-generated method stub
 
 		UserDAO dao = new UserDAO();
-		//dao.getUserList();
+		dao.getUserList();
 		//dao.insertUser("ssamz3", "ssamz/123", "샘즈", "ADMIN");
 		
 	}
