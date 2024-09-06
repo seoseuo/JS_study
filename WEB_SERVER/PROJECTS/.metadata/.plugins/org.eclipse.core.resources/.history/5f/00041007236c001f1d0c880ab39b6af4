@@ -14,12 +14,12 @@ public class UserDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-
+	
+	
 	// USERS 테이블 관련 SQL 명령어.
 	private String USER_LIST = "SELECT * FROM USERS";
 	private String USER_INSERT = "INSERT INTO USERS VALUES(?,?,?,?)";
 	private String USER_UPDATE = "UPDATE USERS SET NAME = ?, ROLE = ? WHERE ID = ?";
-	private String USER_DELETE = "DELETE FROM USERS WHERE ID = ?";
 
 	// CRUD
 
@@ -61,7 +61,7 @@ public class UserDAO {
 			stmt.setString(3, name);
 			stmt.setString(4, role);
 
-			System.out.println("INSERT" + stmt.executeLargeUpdate() + "건 데이터 처리 성공!");
+			System.out.println(stmt.executeLargeUpdate() + "건 데이터 처리 성공!");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -83,33 +83,12 @@ public class UserDAO {
 			stmt.setString(3, id);
 
 			stmt.executeUpdate();
-			System.out.println("UPDATE" + stmt.executeLargeUpdate() + "건 데이터 처리 성공!");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
-		}
-	}
-
-	// 회원 삭제
-	public void deleteUser(String id) {
-		try {
-			conn = JDBCUtil.getConnection();
-
-			stmt = conn.prepareStatement(USER_DELETE);
-
-			stmt.setString(1, id);
-			stmt.executeUpdate();
-			System.out.println("DELETE" + stmt.executeLargeUpdate() + "건 데이터 처리 성공!");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-
-			JDBCUtil.close(stmt, conn);
-
 		}
 	}
 
