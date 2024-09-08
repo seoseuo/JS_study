@@ -6,8 +6,9 @@
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="org.apache.catalina.User"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.user.UserDAO"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.common.JDBCUtil"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="com.ssamz.biz.user.UserCustomDAO"/>
 </qualifiedTypeNameHistroy>

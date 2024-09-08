@@ -7,26 +7,20 @@ import java.sql.SQLException;
 
 import com.ssamz.biz.common.JDBCUtil;
 
-//DAO(Data Access Object) 클래스 
-//데이터 베이스와 연동하는 역할로 한정 
-
+//DAO(Data Access Object) 클래스
 public class UserDAO {
 
 	// JDBC 관련번수
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
+
 	// USERS 테이블 관련 SQL 명령어.
 	private String USER_LIST = "SELECT * FROM USERS";
 	private String USER_INSERT = "INSERT INTO USERS VALUES(?,?,?,?)";
 	private String USER_UPDATE = "UPDATE USERS SET NAME = ?, ROLE = ? WHERE ID = ?";
 	private String USER_DELETE = "DELETE FROM USERS WHERE ID = ?";
 
-	
-	
-	
-	
 	// CRUD
 
 	// 회원 목록 조회
