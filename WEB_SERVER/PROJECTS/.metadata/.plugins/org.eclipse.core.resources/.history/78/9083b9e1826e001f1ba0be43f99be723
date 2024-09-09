@@ -6,10 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.ssamz.biz.user.UserDAO;
-import com.ssamz.biz.user.UserVO;
-
+import javax.servlet.annotation.WebServlet;
 /**
  * Servlet implementation class LoginServlet
  */
@@ -28,6 +25,8 @@ public class LoginServlet extends HttpServlet {
 //		System.out.println("===> LoginServlet 생성");
 //
 //	}
+	
+	
 
 //	@Override
 //	public void init() throws ServletException {
@@ -37,16 +36,10 @@ public class LoginServlet extends HttpServlet {
 //	}
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1.사용자 입력 정보 추출
-		String id = request.getParameter("id");
-		
-		// 2. DB 연동 처리
-		UserVO vo = new UserVO();
-		vo.setId(id);
-
-		UserDAO dao = new UserDAO();
-		UserVO user = dao.getUser(vo);
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// super.service(req, resp);
+		System.out.println("---> service() 메소드 호출");
 	}
 
 	/**

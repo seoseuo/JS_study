@@ -40,7 +40,6 @@ public class LoginServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1.사용자 입력 정보 추출
 		String id = request.getParameter("id");
-		
 		// 2. DB 연동 처리
 		UserVO vo = new UserVO();
 		vo.setId(id);
