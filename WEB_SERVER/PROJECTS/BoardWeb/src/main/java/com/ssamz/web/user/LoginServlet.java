@@ -1,6 +1,8 @@
 package com.ssamz.web.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 //	}
 
 	@Override
-	// 로그인 서블
+	// 로그인 서블릿
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1.사용자 입력 정보 추출
@@ -52,22 +54,27 @@ public class LoginServlet extends HttpServlet {
 		UserVO user = dao.getUser(vo); // ID를 조회하여 일치하는 객체
 
 		// 3. 응답화면 구성
+		// 응답 메시지에 대한 인코딩 설정
+		response.setContentType("text/html;charset=UTF-8");
+
+		// HTTP 응답 프로토콜 message-body와 연결된 출력 스트림 획득
+		PrintWriter out = response.getWriter();
 
 		if (user != null) {
 			// 로그인 성공 경우
 			if (user.getPassword().equals(password)) {
 
-				System.out.println(user.getName() + "님 로그인 환영! <br>");
-				System.out.println("<a href='/getBoardList.do'>글 목록 이동</a>");
+				out.println(user.getName() + "님 로그인 환영! <br>");
+				out.println("<a href='/getBoardList.do'>글 목록 이동</a>");
 			}
 			// 비밀번호가 틀린 경우
 			else {
-				System.out.println("비밀번호 오류입니다.<br>");
-				System.out.println("<a href='/'></a>");
+				out.println("비밀번호 오류입니다.<br>");
+				out.println("<a href='/'></a>");
 			}
 		} else { // 아이디가 틀린 경우
-			System.out.println("아이디 오류입니다.<br>");
-			System.out.println("<a href='/'>다시 로그인</a>");
+			out.println("아이디 오류입니다.<br>");
+			out.println("<a href='/'>다시 로그인</a>");
 		}
 
 	}
