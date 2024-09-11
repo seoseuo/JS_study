@@ -20,9 +20,12 @@ public class BoardDAO {
 	// SQL 명령어
 	private static String BOARD_LIST = "select * from board order by seq desc";
 	
+	
 	// 글 목록 검색
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		// TODO Auto-generated method stub
+		System.out.println("---> 글 목록 검색 수행중...");
+		
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		
 		try {
