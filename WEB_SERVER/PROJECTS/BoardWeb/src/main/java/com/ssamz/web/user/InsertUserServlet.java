@@ -3,6 +3,7 @@ package com.ssamz.web.user;
 import java.io.IOException;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -42,8 +43,14 @@ public class InsertUserServlet extends HttpServlet {
 
 		// 인코딩 처리
 		request.setCharacterEncoding("UTF-8");
-		ServletConfig config = getServletConfig();
-		encoding = config.getInitParameter("boardEncoding");
+		
+		//config 일 때, 
+		//ServletConfig config = getServletConfig();
+		//encoding = config.getInitParameter("boardEncoding");
+		
+		//context 일 때,
+		ServletContext context = getServletContext();
+		encoding = context.getInitParameter("boardEncoding");
 
 		System.out.println("---> Encoding : " + encoding);
 

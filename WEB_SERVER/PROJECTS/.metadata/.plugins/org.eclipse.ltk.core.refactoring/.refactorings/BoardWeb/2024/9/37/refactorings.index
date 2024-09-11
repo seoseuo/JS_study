@@ -3,3 +3,9 @@
 1725775462492	Rename type 'SelectUserTest3'
 1725775476202	Copy compilation unit
 1725848666283	Move 'insertUser.html' to 'webapp'
+1725942576351	Move compilation unit
+1725942697191	Rename type 'InsertUserServlet'
+1725943021173	Delete element
+1725943028325	Rename type '_InsertUserServlet'
+1725955499513	Rename type 'boardDAO'
+1725955510222	Rename type 'boardVO'

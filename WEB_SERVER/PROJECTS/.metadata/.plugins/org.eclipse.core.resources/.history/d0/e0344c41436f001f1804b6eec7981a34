@@ -1,0 +1,6 @@
+package com.ssamz.biz.board;
+import java.sql.Connection;
+
+public class boardDAO {
+	private Connection conn;
+}

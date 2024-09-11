@@ -8,11 +8,4 @@
 	</buildSpec>
 	<natures>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>temp/10000001/BoardWeb.war</name>
-			<type>2</type>
-			<locationURI>jarf:///file:/Users/seuo/Desktop/DEV/Personal/BrushUp/WEB_SERVER/PROJECTS/BoardWeb/BoardWeb.war!/</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

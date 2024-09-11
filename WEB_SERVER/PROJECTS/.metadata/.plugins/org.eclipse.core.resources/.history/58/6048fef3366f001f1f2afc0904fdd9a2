@@ -1,0 +1,13 @@
+package com.ssamz.biz.board;
+import java.sql.Date;
+
+//VO(Value Object) 클래스
+public class boardVO {
+
+	// 필드
+	private int seq;
+	private String title;
+	private String writer;
+	private String content;
+	private Date regDate;
+}
