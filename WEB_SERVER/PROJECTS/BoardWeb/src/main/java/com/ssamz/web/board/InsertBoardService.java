@@ -51,6 +51,9 @@ public class InsertBoardService extends HttpServlet {
 		
 		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.insertBoard(vo);
+		
+		// 3. 화면 이동
+		response.sendRedirect("getBoardList.do");
 	}
 
 }
