@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssamz.biz.board.BoardDAO;
 import com.ssamz.biz.board.BoardVO;
@@ -29,6 +31,38 @@ public class GetBoardListServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// System.out.println("/getBoardList.do");
 
+		// 0. 상태 정보 체크
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
+
+		if (userId == null) {
+			response.sendRedirect("/");
+		}
+
+		// 0. 상태 정보 체크
+		/*
+		 * HttpSession session = request.getSession(); String sessionId =
+		 * session.getId();
+		 * 
+		 * if (session.isNew()) { System.out.println("===> 처음 생성된 세션 : " + sessionId); }
+		 * else { System.out.println("===> 재사용중인 세션 : " + sessionId); }
+		 */
+
+		// 0. 상태 정보 체크
+		/*
+		 * Cookie[] cookieList = request.getCookies();
+		 * 
+		 * if (cookieList == null) { response.sendRedirect("/login.html"); } else {
+		 * 
+		 * String userId = null;
+		 * 
+		 * for (Cookie cookie : cookieList) { if (cookie.getName().equals("userId")) {
+		 * userId = cookie.getValue(); } }
+		 * 
+		 * if (userId == null) { response.sendRedirect("/login.html"); }
+		 * 
+		 * }
+		 */
 		// 1. DB 연동 처리
 		BoardVO vo = new BoardVO();
 
@@ -50,7 +84,9 @@ public class GetBoardListServlet extends HttpServlet {
 		out.println("<center>");
 
 		out.println("<h1>게시글 목록</h1>");
-		out.println("<h3>테스터님 로그인 환영합니다......");
+
+		String userName = (String) session.getAttribute("userName");
+		out.println("<h3>" + userName + "님 로그인 환영합니다......");
 		out.println("<a href='logout.do'>Log-out</a></h3>");
 
 		out.println("<table border='1' cellpadding='0' cellspacing='0' width='700'>");

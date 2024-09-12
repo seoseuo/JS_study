@@ -5,9 +5,11 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssamz.biz.board.BoardDAO;
 import com.ssamz.biz.board.BoardVO;
@@ -28,6 +30,29 @@ public class GetBoardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// System.out.println("---> GetBoardServlet -> service() 메소드 호출");
 
+		// 0. 상태 정보 체크
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
+
+		if (userId == null) {
+			response.sendRedirect("/");
+		}
+
+		// 0. 상태 정보 체크
+		/*
+		 * Cookie[] cookieList = request.getCookies();
+		 * 
+		 * if (cookieList == null) { response.sendRedirect("/login.html"); } else {
+		 * 
+		 * String userId = null;
+		 * 
+		 * for (Cookie cookie : cookieList) { if (cookie.getName().equals("userId")) {
+		 * userId = cookie.getValue(); } }
+		 * 
+		 * if (userId == null) { response.sendRedirect("/login.html"); }
+		 * 
+		 * }
+		 */
 		// 1. 사용자 입력 정보 추출
 		String seq = request.getParameter("seq");
 
@@ -110,7 +135,11 @@ public class GetBoardServlet extends HttpServlet {
 		// 글 등록 | 글 삭제 | 글 목록
 		out.println("<hr>");
 		out.println("<a href='insertBoard.html'>글등록</a>&nbsp;&nbsp;&nbsp;");
-		out.println("<a href='deleteBoard.do?seq=" + board.getSeq() + "'>글삭제</a>&nbsp;&nbsp;&nbsp;");
+
+		String userRole = (String) session.getAttribute("userRole");
+		if (userRole.equals("ADMIN")) {
+					out.println("<a href='deleteBoard.do?seq=" + board.getSeq() + 
+							"'>글삭제</a>&nbsp;&nbsp;&nbsp;");}
 		out.println("<a href='getBoardList.do'>글목록</a>");
 
 		out.println("</center>");

@@ -18,16 +18,12 @@ public class BoardDAO {
 	private ResultSet rs;
 
 	// SQL 명령어
-	// 게시글 목록 가져오기
 	private static String BOARD_LIST = "select * from board order by seq desc";
-
-	// 게시글 등록하기
-	private static String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0) + 1  from board), ?, ?, ?)";
-
-	// 게시글 상세보기
+	private static String BOARD_INSERT = "insert into board(seq, title, writer, content) "
+			+ "values((select nvl(max(seq), 0) + 1  from board), ?, ?, ?)";
 	private static String BOARD_GET = "select * from board where seq = ?";
-
-	//
+	private static String BOARD_UPDATE = "update board set title = ?, content = ? where seq = ?";
+	private static String BOARD_DELETE = "delete board where seq = ?";
 
 	// 글 목록 검색
 	public List<BoardVO> getBoardList(BoardVO vo) {
@@ -70,14 +66,13 @@ public class BoardDAO {
 	// 글 등록
 	public void insertBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		System.out.println("---> 글 등록 수행중...");
-
-		conn = JDBCUtil.getConnection();
+		// System.out.println("---> 글 등록 수행중...");
 
 		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_INSERT);
 
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(BOARD_INSERT);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
@@ -89,21 +84,26 @@ public class BoardDAO {
 		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
+
 	}
 
 	// 글 상세 조회
 	public BoardVO getBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
+		// System.out.println("---> 글 상세 조회 수행중...");
+
 		BoardVO board = null;
 
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_GET);
 
+			stmt = conn.prepareStatement(BOARD_GET);
 			stmt.setInt(1, vo.getSeq());
+
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
+
 				board = new BoardVO();
 				board.setSeq(rs.getInt("SEQ"));
 				board.setTitle(rs.getString("TITLE"));
@@ -111,8 +111,7 @@ public class BoardDAO {
 				board.setContent(rs.getString("CONTENT"));
 				board.setRegDate(rs.getDate("REGDATE"));
 				board.setCnt(rs.getInt("CNT"));
-				System.out.println(vo.getSeq());
-				System.out.println(board.getSeq());
+
 			}
 
 		} catch (SQLException e) {
@@ -123,6 +122,53 @@ public class BoardDAO {
 		}
 
 		return board;
+
+	}
+
+	// 글 수정
+	public void updateBoard(BoardVO vo) {
+		// TODO Auto-generated method stub
+		// System.out.println("---> 글 수정 수행중...");
+
+		try {
+
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(BOARD_UPDATE);
+			stmt.setString(1, vo.getTitle());
+			stmt.setString(2, vo.getContent());
+			stmt.setInt(3, vo.getSeq());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+
+	}
+
+	// 글 삭제
+	public void deleteBoard(BoardVO vo) {
+		// TODO Auto-generated method stub
+		// System.out.println("---> 글 삭제 수행중...");
+
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(BOARD_DELETE);
+			stmt.setInt(1, vo.getSeq());
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+
 	}
 
 }

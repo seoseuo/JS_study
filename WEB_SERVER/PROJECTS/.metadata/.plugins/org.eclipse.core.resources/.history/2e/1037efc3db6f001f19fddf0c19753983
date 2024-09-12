@@ -1,0 +1,46 @@
+package com.ssamz.biz.board;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class GetBoardListServlet
+ */
+@WebServlet("/getBoardList.do")
+public class GetBoardListServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// System.out.println("/getBoardList.do");
+
+		// 1. DB 연동 처리
+		BoardVO vo = new BoardVO();
+
+		BoardDAO boardDAO = new BoardDAO();
+		List<BoardVO> boardList = boardDAO.getBoardList(vo);
+
+		// 2. 응답화면 구성
+		response.setCharacterEncoding("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<h1>게시글 목록</h1>");
+		out.println("<hr>");
+		out.close();
+		
+
+	}
+
+}
