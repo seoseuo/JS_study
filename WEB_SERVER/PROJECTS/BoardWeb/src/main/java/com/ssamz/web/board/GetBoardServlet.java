@@ -31,12 +31,12 @@ public class GetBoardServlet extends HttpServlet {
 		// System.out.println("---> GetBoardServlet -> service() 메소드 호출");
 
 		// 0. 상태 정보 체크
-		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
-
-		if (userId == null) {
-			response.sendRedirect("/");
-		}
+//		HttpSession session = request.getSession();
+//		String userId = (String) session.getAttribute("userId");
+//
+//		if (userId == null) {
+//			response.sendRedirect("/");
+//		}
 
 		// 0. 상태 정보 체크
 		/*
@@ -65,9 +65,9 @@ public class GetBoardServlet extends HttpServlet {
 
 		// System.out.println("--> 글 번호 : " + board.getSeq());
 		// System.out.println("--> 글 제목 : " + board.getTitle());
+//		response.setContentType("text/html;charset=UTF-8");
 
 		// 3. 응답 화면 구성
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		out.println("<html>");
@@ -136,10 +136,11 @@ public class GetBoardServlet extends HttpServlet {
 		out.println("<hr>");
 		out.println("<a href='insertBoard.html'>글등록</a>&nbsp;&nbsp;&nbsp;");
 
+		HttpSession session = request.getSession();
 		String userRole = (String) session.getAttribute("userRole");
 		if (userRole.equals("ADMIN")) {
-					out.println("<a href='deleteBoard.do?seq=" + board.getSeq() + 
-							"'>글삭제</a>&nbsp;&nbsp;&nbsp;");}
+			out.println("<a href='deleteBoard.do?seq=" + board.getSeq() + "'>글삭제</a>&nbsp;&nbsp;&nbsp;");
+		}
 		out.println("<a href='getBoardList.do'>글목록</a>");
 
 		out.println("</center>");

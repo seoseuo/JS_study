@@ -13,8 +13,6 @@
     <fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.user.UserVO"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.user.UserDAO"/>
-    <fullyQualifiedTypeName name="javax.servlet.annotation.WebInitParam"/>
-    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.board.boardVO"/>
     <fullyQualifiedTypeName name="com.ssamz.biz.board.boardDAO"/>
@@ -27,6 +25,11 @@
     <fullyQualifiedTypeName name="com.ssamz.biz.board.BoardDAO"/>
     <fullyQualifiedTypeName name="javax.websocket.Session"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebInitParam"/>
 </qualifiedTypeNameHistroy>
