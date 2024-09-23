@@ -70,10 +70,11 @@ public class LoginServlet extends HttpServlet {
 
 				// 상태 정보를 세션에 저장합니다.
 				HttpSession session = request.getSession();
-//				session.setMaxInactiveInterval(10);
-				session.setAttribute("userId", user.getId());
-				session.setAttribute("userName", user.getName());
-				session.setAttribute("userRole", user.getRole());
+				session.setAttribute("user", user);
+				// session.setMaxInactiveInterval(10);
+				// session.setAttribute("userId", user.getId());
+				// session.setAttribute("userName", user.getName());
+				// session.setAttribute("userRole", user.getRole());
 
 				// 상태 정보를 쿠키에 저장하여 전송합니다.
 				// Cookie userId = new Cookie("userId", user.getId());
@@ -88,12 +89,11 @@ public class LoginServlet extends HttpServlet {
 				// request.setAttribute("welcomeMessage", "님 환영합니다.");
 
 				// 글 목록 화면으로 리디렉트합니다.
-				response.sendRedirect("getBoardList.do");
+				// response.sendRedirect("getBoardList.do");
 
 				// 글 목록 화면으로 포워딩합니다.
-				// RequestDispatcher dispatcher =
-				// request.getRequestDispatcher("getBoardList.do");
-				// dispatcher.forward(request, response);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("getBoardList.do");
+				dispatcher.forward(request, response);
 				// out.println(user.getName() + "님 로그인 환영!<br>");
 				// out.println("<a href='/getBoardList.do'>글 목록 이동</a>");
 			} else { // 비밀번호가 틀린 경우

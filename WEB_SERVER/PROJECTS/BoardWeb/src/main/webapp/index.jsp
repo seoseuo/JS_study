@@ -3,13 +3,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 프로그램</title>
+<title>TITLE</title>
 </head>
 <body>
+	
+	<center>
+		<h1><%= request.getParameter("id") %>님 환영합니다.</h1>
+	</center>
 
-	<hr>
-	<a href="index.jsp">Home</a>&nbsp;&nbsp;&nbsp;
-	<a href="insertUser.jsp">회원가입</a>&nbsp;&nbsp;&nbsp;
-	<a href="login.jsp">로그인</a>&nbsp;&nbsp;&nbsp;
-	<hr>
-	<br>
+</body>
+</html>

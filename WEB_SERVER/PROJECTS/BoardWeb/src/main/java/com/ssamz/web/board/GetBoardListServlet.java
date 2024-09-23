@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ssamz.biz.board.BoardDAO;
 import com.ssamz.biz.board.BoardVO;
+import com.ssamz.biz.user.UserVO;
 
 /**
  * Servlet implementation class GetBoardListServlet
@@ -33,19 +32,19 @@ public class GetBoardListServlet extends HttpServlet {
 		// System.out.println("/getBoardList.do");
 
 		// 0. 상태 정보 체크
-		// 필터로 인증 처리를 하였음
-//		HttpSession session = request.getSession();
-//		String userId = (String) session.getAttribute("userId");
-//
-//		if (userId == null) {
-//			response.sendRedirect("/");
-//		}
+		/*
+		 * HttpSession session = request.getSession(); String userId = (String)
+		 * session.getAttribute("userId");
+		 * 
+		 * if (userId == null) { response.sendRedirect("/"); }
+		 */
+
+		// 0. 인코딩 설정
+		// ServletContext context = request.getServletContext();
+		// String encoding = context.getInitParameter("boardEncoding");
+		// request.setCharacterEncoding(encoding);
 
 		// 1. 사용자 입력 정보 추출
-		ServletContext context = request.getServletContext();
-//		String encoding = context.getInitParameter("boardEncoding");
-//		request.setCharacterEncoding(encoding);
-
 		String searchCondition = request.getParameter("searchCondition");
 		String searchKeyword = request.getParameter("searchKeyword");
 
@@ -111,12 +110,14 @@ public class GetBoardListServlet extends HttpServlet {
 
 		out.println("<h1>게시글 목록</h1>");
 
-		String userName = (String) session.getAttribute("userName");
-//		String welcomeMessage = (String) session.getAttribute("welcomeMessage");
+		UserVO user = (UserVO) session.getAttribute("user");
+		// String userName = (String) session.getAttribute("userName");
+		// String welcomeMessage = (String) context.getAttribute("welcomeMessage");
+		// String welcomeMessage = (String) session.getAttribute("welcomeMessage");
 		// String welcomeMessage = (String) request.getAttribute("welcomeMessage");
-		String welcomeMessage = (String) context.getAttribute("welcomeMessage");
-
-		out.println("<h3>" + userName + welcomeMessage);
+		// out.println("<h3>" + userName + welcomeMessage);
+		out.println("<h3>" + user.getName() + "님 환영합니다......");
+		// out.println("<h3>" + userName + "님 환영합니다......");
 		// out.println("<h3>" + userName + "님 로그인 환영합니다......");
 		out.println("<a href='logout.do'>Log-out</a></h3>");
 
