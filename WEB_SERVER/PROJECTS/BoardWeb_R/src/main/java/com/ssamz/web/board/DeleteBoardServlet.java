@@ -17,7 +17,7 @@ import com.ssamz.biz.board.BoardVO;
 /**
  * Servlet implementation class DeleteBoardServlet
  */
-@WebServlet("/deleteBoard.do")
+//@WebServlet("/deleteBoard.do")
 public class DeleteBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -18,9 +18,9 @@ import com.ssamz.biz.user.UserVO;
 /**
  * Servlet implementation class InsertUserServlet
  */
-@WebServlet(urlPatterns = "/insertUser.do")
 //@WebServlet(urlPatterns = "/insertUser.do",
 //			initParams = @WebInitParam(name = "boardEncoding", value = "UTF-8"))
+//@WebServlet(urlPatterns = "/insertUser.do")
 public class InsertUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String encoding;

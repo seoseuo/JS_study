@@ -2,7 +2,7 @@
 <%-- page contentType="text/html; charset=UTF-8" 
 	errorPage="errors/boardError.jsp"
     session="false" --%>
-<%@ include file="../layout/header.jsp" %>
+<%@ include file="../WEB-INF/layout/footer.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +19,7 @@
 		<%-- 세션 아이디 : <%= session.getId() %> --%>
 	</center>
 	
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="../WEB-INF/layout/footer.jsp" %>
 
 </body>
 </html>

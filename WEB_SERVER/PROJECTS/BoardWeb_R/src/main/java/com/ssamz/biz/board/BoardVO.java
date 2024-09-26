@@ -16,8 +16,9 @@ import lombok.ToString;
 @Setter
 @ToString
 */
-@Data
+
 // VO(Value Object) 클래스
+@Data
 public class BoardVO {
 	
 	// 필드

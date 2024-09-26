@@ -16,7 +16,7 @@ import com.ssamz.biz.board.BoardVO;
 /**
  * Servlet implementation class UpdateBoardServlet
  */
-@WebServlet("/updateBoard.do")
+//@WebServlet("/updateBoard.do")
 public class UpdateBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String encoding;

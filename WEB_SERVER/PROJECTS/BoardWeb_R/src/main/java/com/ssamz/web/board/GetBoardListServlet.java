@@ -18,7 +18,7 @@ import com.ssamz.biz.user.UserVO;
 /**
  * Servlet implementation class GetBoardListServlet
  */
-@WebServlet("/getBoardList.do")
+//@WebServlet("/getBoardList.do")
 public class GetBoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
