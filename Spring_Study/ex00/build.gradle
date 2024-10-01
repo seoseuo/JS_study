@@ -1,53 +1,99 @@
 plugins {
-  id 'java'
-  id 'war'
+    id 'java' // Java 프로젝트를 위한 플러그인
+    id 'war' // WAR 파일(웹 애플리케이션 배포 파일) 생성을 위한 플러그인
 }
 
-group 'com.zerock'
-version '1.0-SNAPSHOT'
+group 'com.zerock' // 프로젝트의 그룹 ID
+version '1.0-SNAPSHOT' // 프로젝트 버전 설정
 
 repositories {
-  mavenCentral()
+    mavenCentral() // Maven 중앙 저장소에서 의존성을 가져오도록 설정
 }
 
 ext {
-  junitVersion = '5.10.2'
+    junitVersion = '5.10.2' // JUnit의 버전을 변수로 설정하여 재사용
 }
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '1.8' // Java 소스 코드의 호환성 버전 (Java 1.8 사용)
+targetCompatibility = '1.8' // 컴파일된 코드의 타겟 호환성 버전 (Java 1.8 사용)
 
 tasks.withType(JavaCompile) {
-  options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8' // 소스 코드 인코딩을 UTF-8로 설정
 }
 
 dependencies {
-  compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+    // 컴파일 시에만 필요한 서블릿 API (실제 실행 시 제공됨)
 
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    // JUnit 5 API를 테스트 의존성으로 추가
 
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    // JUnit 5 실행 엔진을 테스트 런타임에만 사용
 
+    // 금일 학습할 라이브러리 추가 예정
+    // 필요한 라이브러리를 나중에 추가할 때 사용할 수 있는 공간
 
-// 금일 학습할 라이브러리 추가 예정
+    // 스프링 프레임워크 관련
+    // Spring Core: 스프링의 핵심 기능을 제공하는 라이브러리
+    implementation 'org.springframework:spring-core:5.3.27'
 
-// https://mvnrepository.com/artifact/org.springframework/spring-core
-  implementation 'org.springframework:spring-core:5.3.27'
-  implementation 'org.springframework:spring-context:5.3.27'
-  implementation 'org.springframework:spring-webmvc:5.3.27'
-  // https://mvnrepository.com/artifact/org.springframework/spring-test
-  testImplementation 'org.springframework:spring-test:5.3.27'
+    // Spring Context: 스프링의 DI(의존성 주입) 컨테이너 관련 기능을 제공
+    implementation 'org.springframework:spring-context:5.3.27'
 
-// https://mvnrepository.com/artifact/org.projectlombok/lombok
-  compileOnly 'org.projectlombok:lombok:1.18.30'
-  testCompileOnly 'org.projectlombok:lombok:1.18.30'
-  annotationProcessor('org.projectlombok:lombok:1.18.30')
-  testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    // Spring Web MVC: 스프링의 웹 MVC 프레임워크
+    implementation 'org.springframework:spring-webmvc:5.3.27'
 
+    // Spring Test: 스프링 테스트 관련 라이브러리
+    testImplementation 'org.springframework:spring-test:5.3.27'
 
+    // 롬복 관련
+    // Lombok: getter/setter, toString 등 자주 사용되는 메서드를 자동 생성해주는 라이브러리
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    // 컴파일 시에만 롬복 기능 사용 (실행 시 필요 없음)
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    // 테스트 컴파일 시에만 롬복 기능 사용
+
+    annotationProcessor('org.projectlombok:lombok:1.18.30')
+    // 롬복 애노테이션 처리기 추가 (컴파일 중 롬복 애노테이션을 처리)
+
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    // 테스트에서 롬복 애노테이션 처리
+
+    // 마리아DB 관련
+    // MariaDB JDBC 드라이버: Java 애플리케이션에서 MariaDB와 연결할 때 사용하는 드라이버
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+
+    // 커넥션 풀 관련
+    // HikariCP: 빠르고 경량화된 커넥션 풀 라이브러리
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+
+    // 로그4J 관련
+    // Log4J Core: 로그를 기록하는 데 필요한 핵심 라이브러리
+    implementation 'org.apache.logging.log4j:log4j-core:2.22.1'
+
+    // Log4J API: 로그를 기록할 때 사용할 API
+    implementation 'org.apache.logging.log4j:log4j-api:2.22.1'
+
+    // Log4J SLF4J 연결 라이브러리
+    // SLF4J와 Log4J를 연결하여 로그 기능을 사용할 수 있게 해주는 라이브러리
+    testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.22.1'
+
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis
+    implementation 'org.mybatis:mybatis:3.5.7'
+
+// https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+    implementation 'org.mybatis:mybatis-spring:2.0.6'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    implementation 'org.springframework:spring-jdbc:5.3.27'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    implementation 'org.springframework:spring-tx:5.3.27'
 
 }
 
-
 test {
-useJUnitPlatform()}
+    useJUnitPlatform() // JUnit 5 플랫폼을 테스트 프레임워크로 사용
+}
