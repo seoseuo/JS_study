@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.zerock.ex00.mapper.TimeMapper;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -23,6 +22,15 @@ public class TimeTests {
         log.info(timeMapper.getTime());
         log.info("------------------------------");
     }
+
+    @Test
+    public void test2() {
+        log.info(timeMapper.getClass().getName());
+        log.info("------------------------------");
+        log.info(timeMapper.getTime());
+        log.info("------------------------------");
+    }
+
 
 
 }
