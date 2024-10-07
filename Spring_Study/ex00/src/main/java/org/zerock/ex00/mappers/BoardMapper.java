@@ -7,4 +7,11 @@ import java.util.List;
 public interface BoardMapper {
 
     List<BoardVO> getList();
+
+    int insert(BoardVO vo);
+
+    BoardVO select(Long bno);
+
+    int update(BoardVO vo);
+
 }

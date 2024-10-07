@@ -17,7 +17,7 @@ public class BoardMapperTests {
     BoardMapper boardMapper;
 
     @Test
-    public void test1(){
+    public void test1() {
         log.info(boardMapper);
     }
 
@@ -26,4 +26,33 @@ public class BoardMapperTests {
         boardMapper.getList().forEach(boardVO -> log.info(boardVO));
     }
 
+    @Test
+    public void testInsert() {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setTitle("NewTest");
+        boardVO.setContent("New Test...");
+        boardVO.setWriter("user01");
+
+        log.info("COUNT : " + boardMapper.insert(boardVO));
+        log.info("BNO : " + boardVO.getBno());
+    }
+
+    @Test
+    public void testSelect() {
+        long bno = 5L;
+
+        log.info(boardMapper.select(bno));
+    }
+
+    @Test
+    public void testUpdate() {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setTitle("Updated Title");
+        boardVO.setContent("Updated Content");
+        boardVO.setBno(5L);
+
+        int updateCount = boardMapper.update(boardVO);
+        log.info("update : " + updateCount);
+
+    }
 }
