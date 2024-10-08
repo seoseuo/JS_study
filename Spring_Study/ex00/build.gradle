@@ -92,6 +92,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework/spring-tx
     implementation 'org.springframework:spring-tx:5.3.27'
 
+    // https://mvnrepository.com/artifact/jstl/jstl
+    implementation 'jstl:jstl:1.2'
+
+
 }
 
 test {

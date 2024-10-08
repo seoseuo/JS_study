@@ -17,27 +17,42 @@ public class BoardService {
 
     private final BoardMapper boardMapper;
 
-    public Long register(BoardVO boardVO) {
-        log.info("- - - - - - - - -" + boardVO);
+    public Long register(BoardVO boardVO){
+
+        log.info("register....." + boardVO);
 
         int count = boardMapper.insert(boardVO);
-        return boardVO.getBno(); // 몇번이 등록되었는지 ?
+
+        return boardVO.getBno();
+
     }
 
-    public List<BoardVO> list() {
+    public List<BoardVO> list(){
+
         return boardMapper.getList();
+
     }
 
-    public BoardVO get(long bno) {
+    public BoardVO get(long bno){
 
         return boardMapper.select(bno);
+
     }
 
-    public boolean modify(BoardVO boardVO) {
+    public boolean modify(BoardVO boardVO){
+
         return boardMapper.update(boardVO) == 1;
+
     }
 
-    public boolean delete(long bno) {
+    public boolean delete(long bno){
+
         return true;
+
     }
+
+
+
+
+
 }
