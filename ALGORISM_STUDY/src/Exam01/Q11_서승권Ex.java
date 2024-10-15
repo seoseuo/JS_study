@@ -1,3 +1,5 @@
+package Exam01;
+
 public class Q11_서승권Ex {
     public static void main(String[] args) {
 

@@ -1,24 +1,32 @@
+package Exam01;
+
 import java.util.Scanner;
 
-public class Q3_서승권Ex {
+public class Q1_서승권 {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("네 정수의 최솟값을 구합니다.");
         System.out.print("a의 값: ");
         int a = scanner.nextInt();
+
         System.out.print("b의 값: ");
         int b = scanner.nextInt();
+
         System.out.print("c의 값: ");
         int c = scanner.nextInt();
-        System.out.print("d의 값: ");
-        int d = scanner.nextInt();
 
-        int min = a;
-        if (b < min) min = b;
-        if (c < min) min = c;
-        if (d < min) min = d;
+        int max = a;  // 일단 a를 최댓값으로 가정
 
-        System.out.println("최솟값은 " + min + "입니다.");
+        if (b > max) {
+            max = b;
+        }
+
+        if (c > max) {
+            max = c;
+        }
+
+        // 최종 결과 출력
+        System.out.println("최댓값은 " + max + "입니다.");
     }
 }

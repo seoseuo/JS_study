@@ -1,3 +1,5 @@
+package Exam01;
+
 import java.util.Scanner;
 
 public class Q12_서승권 {
