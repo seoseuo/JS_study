@@ -15,7 +15,8 @@
 <h1 class="h3 mb-2 text-gray-800">List</h1>
 <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
     For more information about DataTables, please visit the <a target="_blank"
-                                                               href="https://datatables.net">official DataTables documentation</a>.</p>
+                                                               href="https://datatables.net">official DataTables
+        documentation</a>.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -24,6 +25,9 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+
+            ${cri}
+
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
@@ -37,11 +41,11 @@
                 <tbody class="tbody">
                 <c:forEach var="board" items="${list}">
                     <tr data-bno="${board.bno}">
-                        <td><c:out value="${board.bno}" /></td>
-                        <td><c:out value="${board.title}" /></td>
-                        <td><c:out value="${board.writer}" /></td>
-                        <td><c:out value="${board.regDate}" /></td>
-                        <td><c:out value="${board.updateDate}" /></td>
+                        <td><c:out value="${board.bno}"/></td>
+                        <td><c:out value="${board.title}"/></td>
+                        <td><c:out value="${board.writer}"/></td>
+                        <td><c:out value="${board.regDate}"/></td>
+                        <td><c:out value="${board.updateDate}"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -85,14 +89,15 @@
     }
 
     document.querySelector('.tbody').addEventListener("click", (e) => {
-        // alert("click");
+        //alert("click");
+
         const target = e.target.closest("tr");
         const bno = target.dataset.bno;
-        console.log(target);
-        console.log(bno);
+        //console.log(target);
+        //console.log(bno);
+        //console.log(`/board/read/\${bno}`);
         window.location = `/board/read/\${bno}`;
-    },false);
-
+    }, false);
 
 
 </script>

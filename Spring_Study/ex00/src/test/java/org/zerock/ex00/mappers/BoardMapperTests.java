@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.zerock.ex00.domain.BoardVO;
+import org.zerock.ex00.domain.Criteria;
+
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j2
 public class BoardMapperTests {
 
-    @Autowired(required = false) // 이래야 오류를 뱉지 않는다.
+    @Autowired(required = false)
     BoardMapper boardMapper;
 
     @Test
@@ -27,7 +30,20 @@ public class BoardMapperTests {
     }
 
     @Test
+    public void testPage() {
+
+        // 1,10
+        Criteria criteria = new Criteria();
+
+        List<BoardVO> list = boardMapper.getPage(criteria);
+
+        list.forEach(boardVO -> log.info(boardVO));
+
+    }
+
+    @Test
     public void testInsert() {
+
         BoardVO boardVO = new BoardVO();
         boardVO.setTitle("NewTest");
         boardVO.setContent("New Test...");
@@ -35,17 +51,21 @@ public class BoardMapperTests {
 
         log.info("COUNT : " + boardMapper.insert(boardVO));
         log.info("BNO : " + boardVO.getBno());
+
     }
 
     @Test
     public void testSelect() {
+
         long bno = 5L;
 
         log.info(boardMapper.select(bno));
+
     }
 
     @Test
     public void testUpdate() {
+
         BoardVO boardVO = new BoardVO();
         boardVO.setTitle("Updated Title");
         boardVO.setContent("Updated Content");
@@ -55,4 +75,6 @@ public class BoardMapperTests {
         log.info("update : " + updateCount);
 
     }
+
+
 }
