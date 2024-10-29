@@ -40,6 +40,12 @@ public class BoardService {
 
     }
 
+    public int getTotal(Criteria criteria) {
+
+        return boardMapper.getTotal(criteria);
+
+    }
+
     public BoardVO get(long bno) {
 
         return boardMapper.select(bno);

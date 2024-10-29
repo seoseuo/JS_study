@@ -14,6 +14,8 @@ public interface BoardMapper {
 
     int insert(BoardVO vo);
 
+    int getTotal(Criteria criteria);
+
     BoardVO select(Long bno);
 
     int update(BoardVO vo);

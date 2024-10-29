@@ -16,6 +16,12 @@
         limit #{skip}, #{amount}
     </select>
 
+
+    <select id="getTotal" resultType="int">
+        select count(bno)
+        from tbl_board
+    </select>
+
     <insert id="insert">
         <selectKey order="AFTER" keyProperty="bno" resultType="long">
             SELECT LAST_INSERT_ID()
